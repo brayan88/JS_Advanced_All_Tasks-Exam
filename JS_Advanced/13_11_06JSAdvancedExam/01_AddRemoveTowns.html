@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add / Remove Towns</title>
+    <style>select, input { width: 100px }</style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body onload="attachEvents()">
+
+<div>Towns</div>
+<select id="towns" size="4">
+    <option>Sofia</option>
+    <option>Varna</option>
+    <option>Pleven</option>
+</select>
+
+<button id="btnDelete">Delete</button>
+
+<div>
+    <input type="text" id="newItem" />
+    <button id="btnAdd">Add</button>
+</div>
+
+<script>
+    function attachEvents() {
+        let fragment = document.createDocumentFragment();
+        let selectList = $('#towns');
+        let newItem = $('#newItem');
+        let btnAdd = $('#btnAdd').click(function () {
+            if(newItem.val()!=0){
+                let option=$('<option>');
+                selectList.append(option.append(newItem.val()))
+                newItem.val('');
+            }
+        })
+        let btnDelete =$('#btnDelete').click(function () {
+            let selected = $('#towns option:selected');
+            selected.remove();
+        })
+    }
+</script>
+</body>
+</html>
